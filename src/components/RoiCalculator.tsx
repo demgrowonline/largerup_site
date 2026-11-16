@@ -13,6 +13,8 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
   const [monthlyLeads, setMonthlyLeads] = useState(60);
   const [dealValue, setDealValue] = useState(12000);
 
+  const formatNumber = (num: number) => num.toLocaleString("en-US");
+
   // Math:
   // Operational Drag: Each employee spends ~12 hrs/week on repetitive manual tasks
   // Hours saved = teamSize * 12 * 50 weeks * 0.75 (75% automation capture)
@@ -123,7 +125,7 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
                 <div className="flex justify-between items-center text-sm">
                   <span className="font-medium text-white">Avg. High-Ticket Deal Size (LTV)</span>
                   <span className="font-mono text-white px-2.5 py-1 rounded-lg bg-white/10 text-xs font-bold">
-                    ${dealValue.toLocaleString()}
+                    ${formatNumber(dealValue)}
                   </span>
                 </div>
                 <input
@@ -158,7 +160,7 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
                   Projected Annual Enterprise Value
                 </span>
                 <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
-                  ${totalEconomicAdvantage.toLocaleString()}
+                  ${formatNumber(totalEconomicAdvantage)}
                 </div>
                 <p className="text-xs text-emerald-400 font-mono font-medium">
                   + Direct ROI within 30 days of production launch
@@ -173,12 +175,12 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
                     <div>
                       <div className="text-xs text-zinc-400">Annual Hours Reclaimed</div>
                       <div className="text-sm font-bold text-white">
-                        {annualHoursSaved.toLocaleString()} hours / yr
+                        {formatNumber(annualHoursSaved)} hours / yr
                       </div>
                     </div>
                   </div>
                   <div className="text-xs font-mono text-zinc-400 font-medium">
-                    ${annualPayrollSavings.toLocaleString()} Saved
+                    ${formatNumber(annualPayrollSavings)} Saved
                   </div>
                 </div>
 
@@ -193,7 +195,7 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
                     </div>
                   </div>
                   <div className="text-xs font-mono text-emerald-400 font-medium">
-                    +${additionalPipelineRevenue.toLocaleString()}
+                    +${formatNumber(additionalPipelineRevenue)}
                   </div>
                 </div>
               </div>
