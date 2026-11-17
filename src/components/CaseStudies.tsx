@@ -10,7 +10,7 @@ interface CaseStudiesProps {
 export function CaseStudies({ onOpenAudit }: CaseStudiesProps) {
   const examples = [
     {
-      industry: "Consulting & High-Ticket Services",
+      industry: "Consulting & Client Services",
       problem: "Leads submitted a form on the website, but sales reps took an average of 4 hours to reply. Many prospects had already moved on or spoken with another firm.",
       fix: "We set up an automated assistant that immediately reads the inquiry, checks if they qualify, and sends a personal reply inviting them to pick a time on the calendar.",
       outcome: "Replies now go out in under 60 seconds. Meeting booking rates doubled.",
@@ -38,7 +38,7 @@ export function CaseStudies({ onOpenAudit }: CaseStudiesProps) {
             Common problems we solve.
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-            Real examples of how high-ticket businesses use our automations to save time and win more deals.
+            Real examples of how growing businesses use our automations to save time and win more deals.
           </p>
         </div>
 

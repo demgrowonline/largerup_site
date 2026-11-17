@@ -66,7 +66,7 @@ export default function Home() {
       <OfferCta onOpenAudit={handleOpenAudit} />
 
       {/* Minimalist Gallery Footer */}
-      <Footer />
+      <Footer onOpenAudit={handleOpenAudit} />
 
       {/* Multi-Step Qualification & Audit Modal */}
       <AuditModal isOpen={isAuditOpen} onClose={handleCloseAudit} />
