@@ -1,61 +1,49 @@
 "use client";
 
 import React from "react";
-import { TrendingUp, Clock, Zap, ShieldCheck } from "lucide-react";
+import { Zap, ShieldCheck, Clock, RefreshCw } from "lucide-react";
 
 export function MetricsBar() {
-  const metrics = [
+  const commitments = [
     {
-      label: "Client Pipeline Generated",
-      value: "$34.2M+",
-      description: "Direct revenue pipeline attributed to bespoke autonomous lead capture & AI SDR systems.",
-      icon: TrendingUp,
-    },
-    {
-      label: "Operational Hours Eliminated",
-      value: "48,200+",
-      description: "Back-office and administrative time given directly back to founders and executive teams.",
-      icon: Clock,
-    },
-    {
-      label: "Average Speed-to-Lead",
-      value: "< 42 sec",
-      description: "From raw form submission or inbound inquiry to qualified meeting booked on calendar.",
+      title: "Under 60-second replies",
+      desc: "New leads get an answer before they leave your site or look at a competitor.",
       icon: Zap,
     },
     {
-      label: "Enterprise Uptime",
-      value: "99.98%",
-      description: "SOC2-ready resilient infrastructure with deterministic fallbacks and zero data leaks.",
+      title: "Keep your current tools",
+      desc: "No new software for your team to learn. We plug into your existing email and CRM.",
+      icon: RefreshCw,
+    },
+    {
+      title: "Up and running in 14 days",
+      desc: "From our first conversation to live automations handling your work.",
+      icon: Clock,
+    },
+    {
+      title: "30-day guarantee",
+      desc: "If it doesn't clearly save you time or bring you sales, we work for free until it does.",
       icon: ShieldCheck,
     },
   ];
 
   return (
     <section className="py-12 border-y border-white/5 bg-[#050505]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {metrics.map((item, index) => (
+          {commitments.map((item, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl glass-panel hover:bg-white/[0.04] transition-all duration-300 border border-white/5 flex flex-col justify-between group"
+              className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col justify-between"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500">
-                    Metric 0{index + 1}
-                  </span>
-                  <item.icon className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors" />
-                </div>
-                <div className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
-                  {item.value}
-                </div>
-                <div className="text-xs font-semibold text-zinc-200 mb-1">
-                  {item.label}
-                </div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <item.icon className="w-4 h-4 text-white" />
+                <h3 className="text-xs font-semibold text-white">
+                  {item.title}
+                </h3>
               </div>
-              <p className="text-[11px] text-zinc-400 leading-relaxed mt-2 border-t border-white/5 pt-3">
-                {item.description}
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                {item.desc}
               </p>
             </div>
           ))}

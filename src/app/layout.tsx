@@ -3,23 +3,22 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://largerup.com"),
-  title: "LargerUp | Autonomous AI Infrastructure for High-Ticket Enterprises",
+  title: "LargerUp | More Sales, Less Busywork with AI",
   description:
-    "We engineer bespoke AI systems for $1M–$20M+ enterprises. Eliminate 80% of operational drag or scale inbound pipeline with sub-60-second speed-to-lead. Either way, you earn.",
+    "We build automated AI systems for businesses: reply to leads in seconds to close more sales, and eliminate repetitive busywork for your team. Either way, you make more profit.",
   keywords: [
     "AI Agency",
-    "High Ticket AI Automation",
-    "Bespoke AI Infrastructure",
-    "Revenue Automation",
-    "Speed to Lead",
-    "Operational Drag Elimination",
-    "Enterprise AI Systems",
+    "Business Automation",
+    "Sales Automation",
+    "Lead Reply Automation",
+    "High Ticket AI",
+    "Workflow Automation",
   ],
-  authors: [{ name: "LargerUp Engineering" }],
+  authors: [{ name: "LargerUp" }],
   openGraph: {
-    title: "LargerUp | High-Ticket AI Automation & Infrastructure",
+    title: "LargerUp | More Sales, Less Busywork with AI",
     description:
-      "Autonomous revenue acceleration and operational drag eradication for modern scale-ups. Engineered to deliver tangible ROI in under 14 days.",
+      "We set up automated systems that bring you more sales and handle repetitive tasks. Either way, your business makes more money.",
     url: "https://largerup.com",
     siteName: "LargerUp",
     images: [
@@ -35,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LargerUp | Autonomous AI Infrastructure",
-    description: "Either we scale your sales or kill your operational drag. Either way, you earn.",
+    title: "LargerUp | More Sales, Less Busywork with AI",
+    description: "Either we bring you more sales or we save your team hours of busywork. Either way, you make more money.",
     images: ["/logo-mark.png"],
   },
   icons: {
