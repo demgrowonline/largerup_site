@@ -9,14 +9,14 @@ interface HeroProps {
 
 export function Hero({ onOpenAudit }: HeroProps) {
   return (
-    <section className="relative pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden">
+    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 relative z-10">
-        {/* Main Headline */}
+        {/* Main Headline with exact requested line break discipline */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
-            More sales. Less busywork.
-            <br />
-            <span className="text-zinc-400">Built with AI.</span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] flex flex-col items-center">
+            <span className="inline-block whitespace-nowrap">More sales.</span>
+            <span className="inline-block whitespace-nowrap">Less busywork.</span>
+            <span className="inline-block whitespace-nowrap text-zinc-400">Built with AI.</span>
           </h1>
 
           {/* Plain English Subheadline */}
@@ -29,10 +29,10 @@ export function Hero({ onOpenAudit }: HeroProps) {
           </p>
 
           {/* Action CTAs */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <button
               onClick={onOpenAudit}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold text-black bg-white rounded-full hover:bg-zinc-200 transition-colors active:scale-95 shadow-lg"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold text-black bg-white rounded-full hover:bg-zinc-200 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-lg active:scale-95"
             >
               <span>Book a 15-minute call</span>
               <ArrowRight className="w-4 h-4" />
@@ -40,7 +40,7 @@ export function Hero({ onOpenAudit }: HeroProps) {
 
             <a
               href="#what-we-do"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-3.5 text-xs sm:text-sm font-medium text-zinc-300 rounded-full hover:text-white transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-3.5 text-xs sm:text-sm font-medium text-zinc-300 rounded-full hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <span>See what we do</span>
               <ChevronRight className="w-4 h-4 text-zinc-500" />
@@ -49,9 +49,9 @@ export function Hero({ onOpenAudit }: HeroProps) {
         </div>
 
         {/* Clear Side-by-Side Reality Visual (Apple & Mobbin restraint) */}
-        <div className="mt-16 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Without LargerUp */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4">
+        <div className="mt-14 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Before */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4 hover:border-white/10 transition-all duration-200">
             <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
               Before
             </div>
@@ -79,7 +79,7 @@ export function Hero({ onOpenAudit }: HeroProps) {
           </div>
 
           {/* With LargerUp */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.04] border border-white/15 space-y-4 shadow-xl">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.04] border border-white/15 space-y-4 shadow-xl hover:border-white/25 transition-all duration-200">
             <div className="text-xs font-mono text-white uppercase tracking-wider">
               With LargerUp
             </div>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { MarqueeLogos } from "@/components/MarqueeLogos";
 import { MetricsBar } from "@/components/MetricsBar";
 import { DualEngines } from "@/components/DualEngines";
 import { ArchitectureComparison } from "@/components/ArchitectureComparison";
@@ -37,6 +38,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero onOpenAudit={handleOpenAudit} />
+
+      {/* Marquee Social Proof with Side Blurs & Fades */}
+      <MarqueeLogos />
 
       {/* Undeniable Proof & Authority Metrics */}
       <MetricsBar />

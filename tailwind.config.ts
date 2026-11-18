@@ -62,11 +62,16 @@ const config: Config = {
       animation: {
         "pulse-subtle": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "drift-slow": "drift 12s ease-in-out infinite alternate",
+        marquee: "marquee 32s linear infinite",
       },
       keyframes: {
         drift: {
           "0%": { transform: "translateY(0px) scale(1)" },
           "100%": { transform: "translateY(-15px) scale(1.03)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-33.333333%)" },
         },
       },
     },
