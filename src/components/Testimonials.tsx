@@ -5,19 +5,19 @@ import React from "react";
 export function Testimonials() {
   const reviews = [
     {
-      quote: "Before LargerUp, our inbound leads sat in an inbox for hours while our team was busy. Now, leads get a personal reply in under 60 seconds and book right on our calendar before they even look at a competitor.",
-      author: "Marcus Vance",
-      title: "Founder, Capital Advisory",
+      quote: "During heatwaves our phone rings non-stop. Before LargerUp, we lost at least a third of callers because our dispatch desk was tied up. Now, the missed-call SMS catches them in 20 seconds and books them directly into ServiceTitan. It paid for itself in week two.",
+      author: "Brett Carlson",
+      title: "Owner, Apex Heating & Air",
     },
     {
-      quote: "I used to spend every Sunday evening catching up on client contracts, billing, and project folders. LargerUp automated the whole chain. When a client signs, everything is ready in two minutes without me touching a keyboard.",
-      author: "Elena Rostova",
-      title: "Managing Partner, B2B Growth Group",
+      quote: "Patient no-shows were killing our clinic's margins. The 2-way conversational SMS reminders LargerUp set up cut our no-shows from 28% down to under 10%. Plus, our Instagram ad leads get answered in under 45 seconds while they're still on their phone.",
+      author: "Dr. Sarah Lin",
+      title: "Medical Director, Radiance Aesthetics",
     },
     {
-      quote: "They didn't try to sell us complicated software we'd never use. They just connected into the email and CRM tools we already had and made the busywork go away. It paid for itself in the first two weeks.",
-      author: "David Sterling",
-      title: "Operations Director, Summit Logistics",
+      quote: "My property coordinators were buried under maintenance calls, re-typing tickets into AppFolio, and chasing contractors. LargerUp automated the entire intake and dispatch flow. We manage 350 units today with less stress than we had at 150.",
+      author: "Marcus Sterling",
+      title: "Managing Director, Vanguard Property Group",
     },
   ];
 
@@ -30,7 +30,7 @@ export function Testimonials() {
             What business owners say.
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-            Real feedback from founders who wanted more sales and less wasted time.
+            Real feedback from owners who wanted more bookings and less repetitive office work.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export function Testimonials() {
           {reviews.map((rev, idx) => (
             <div
               key={idx}
-              className="p-7 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6"
+              className="p-7 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6 hover:border-white/10 transition-colors"
             >
               <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
                 "{rev.quote}"

@@ -9,23 +9,23 @@ export function FAQ() {
   const faqs = [
     {
       q: "What kind of businesses is LargerUp for?",
-      a: "Any business that sells high-value services or products, gets regular inquiries, and has a team spending valuable hours on repetitive computer work and follow-ups.",
+      a: "We build automations for service businesses, clinics, and professional firms that get regular inquiries and have staff spending valuable time on follow-ups and repetitive admin. We specialize in Home Services (HVAC, plumbing, roofing), Med Spas & Dental clinics, Property Management, Law Firms, Tax & Accounting firms, and Insurance/Mortgage brokers.",
     },
     {
       q: "Do we have to change the software we already use?",
-      a: "No. We connect directly into the tools you already have—like your CRM, Gmail, Outlook, Slack, or spreadsheets. Your team keeps working the exact same way.",
+      a: "No. We connect directly into the tools you already rely on—such as ServiceTitan, Housecall Pro, AppFolio, Clio, QuickBooks, Gmail, Outlook, or your existing CRM. Your staff keeps working the exact same way.",
     },
     {
       q: "Will my team have to learn complicated AI tools?",
-      a: "No. The automations run quietly in the background. Your team just sees the results: booked meetings on their calendar and tasks completed automatically.",
+      a: "No. The automations run quietly in the background. Your team simply sees booked jobs on the schedule, missed calls texted back, and repetitive data entry finished automatically.",
     },
     {
       q: "How long does it take to set up?",
-      a: "Between 7 and 14 days from our first call to live automations running in your business.",
+      a: "Between 7 and 14 days from our initial onboarding call to live automations actively running in your business.",
     },
     {
       q: "What is your 30-day guarantee?",
-      a: "If our automations don't save your team hours every week or help you close more deals within 30 days of launch, we work for free until they do. No fine print.",
+      a: "If our automations don't save your team hours every week or help you close more jobs within 30 days of launch, we work for free until they do. No fine print.",
     },
     {
       q: "What happens if a tool updates or an automation stops working?",

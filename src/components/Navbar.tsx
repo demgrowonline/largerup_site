@@ -45,7 +45,7 @@ export function Navbar({ onOpenAudit }: NavbarProps) {
 
   const navLinks = [
     { name: "What we do", href: "#what-we-do" },
-    { name: "How it works", href: "#how-it-works" },
+    { name: "Industries", href: "#industries" },
     { name: "Why LargerUp", href: "#why-us" },
     { name: "Time calculator", href: "#calculator" },
     { name: "FAQ", href: "#faq" },

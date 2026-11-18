@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { MarqueeLogos } from "@/components/MarqueeLogos";
 import { MetricsBar } from "@/components/MetricsBar";
 import { DualEngines } from "@/components/DualEngines";
+import { NicheSolutions } from "@/components/NicheSolutions";
 import { ArchitectureComparison } from "@/components/ArchitectureComparison";
 import { RoiCalculator } from "@/components/RoiCalculator";
 import { CaseStudies } from "@/components/CaseStudies";
@@ -45,34 +46,37 @@ export default function Home() {
       {/* Undeniable Proof & Authority Metrics */}
       <MetricsBar />
 
-      {/* The Two Distinct Engines (Revenue vs Operations) */}
+      {/* The Two Distinct Engines (Sales vs Work Automation) */}
       <DualEngines onOpenAudit={handleOpenAudit} />
 
-      {/* Enterprise Architecture vs Fragile Zapier */}
+      {/* Tailored Industry Playbooks & Niche Automations */}
+      <NicheSolutions onOpenAudit={handleOpenAudit} />
+
+      {/* Enterprise Reliability vs Fragile Freelancer / Basic Tools */}
       <ArchitectureComparison />
 
-      {/* Interactive Hormozi Value Calculator */}
+      {/* Interactive Value & Hours Recovered Calculator */}
       <RoiCalculator onOpenAudit={handleOpenAudit} />
 
-      {/* Verified Enterprise Case Studies */}
-      <CaseStudies />
+      {/* Verified Real-World Case Studies */}
+      <CaseStudies onOpenAudit={handleOpenAudit} />
 
       {/* The 3-Step Low-Sacrifice Delivery Roadmap */}
       <Process onOpenAudit={handleOpenAudit} />
 
-      {/* Wall of Founder Proof & Reviews */}
+      {/* Wall of Business Owner Reviews */}
       <Testimonials />
 
       {/* Targeted Objection-Killing FAQs */}
       <FAQ />
 
-      {/* The Grand Slam Closing Offer & Guarantee */}
+      {/* The Closing Offer & 30-Day Guarantee */}
       <OfferCta onOpenAudit={handleOpenAudit} />
 
-      {/* Minimalist Gallery Footer */}
+      {/* Minimalist Pushpin Tear Gallery Footer */}
       <Footer onOpenAudit={handleOpenAudit} />
 
-      {/* Multi-Step Qualification & Audit Modal */}
+      {/* Multi-Step 15-Minute Booking Modal */}
       <AuditModal isOpen={isAuditOpen} onClose={handleCloseAudit} />
     </main>
   );

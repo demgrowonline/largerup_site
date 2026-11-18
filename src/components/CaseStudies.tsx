@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ArrowRight } from "lucide-react";
 
 interface CaseStudiesProps {
   onOpenAudit?: () => void;
@@ -10,22 +9,25 @@ interface CaseStudiesProps {
 export function CaseStudies({ onOpenAudit }: CaseStudiesProps) {
   const examples = [
     {
-      industry: "Consulting & Client Services",
-      problem: "Leads submitted a form on the website, but sales reps took an average of 4 hours to reply. Many prospects had already moved on or spoken with another firm.",
-      fix: "We set up an automated assistant that immediately reads the inquiry, checks if they qualify, and sends a personal reply inviting them to pick a time on the calendar.",
-      outcome: "Replies now go out in under 60 seconds. Meeting booking rates doubled.",
+      industry: "Home Services (HVAC & Mechanical)",
+      client: "Peak Season Call Recovery",
+      problem: "During summer heatwaves, the dispatch desk missed 35% of homeowner calls while lines were tied up. Homeowners called the next contractor on Google, losing high-ticket replacement jobs.",
+      fix: "We deployed an instant missed-call SMS text-back and an after-hours voice assistant that qualifies emergencies and books technicians directly into ServiceTitan.",
+      outcome: "24 emergency jobs recovered in month one. Average response time dropped from 3 hours to 18 seconds.",
     },
     {
-      industry: "Agencies & Professional Firms",
-      problem: "Every time a new client signed, the team spent 2 to 3 days manually drafting contracts, chasing invoices, and setting up folders across Slack and Google Drive.",
-      fix: "We connected their CRM to their billing and project management tools. When a deal is marked 'won', contracts and folders are created automatically.",
-      outcome: "New clients get welcomed in under 3 minutes with zero human effort.",
+      industry: "Aesthetic Clinic & Med Spa",
+      client: "Ad Lead Speed & No-Show Reduction",
+      problem: "Paid ad leads took hours to receive manual follow-up, causing prospects to cool off. Last-minute no-shows were wasting thousands in empty practitioner chair time each week.",
+      fix: "We connected ad campaigns to an instant conversational SMS sequence that answers questions in 40 seconds, plus 2-way interactive confirmation reminders.",
+      outcome: "Consultation booking rates increased 2.4x. Patient no-shows dropped by 62%.",
     },
     {
-      industry: "Operations & Logistics",
-      problem: "Three full-time employees were spending half their day opening PDF bills and invoices, copying numbers, and pasting them into the accounting software.",
-      fix: "We deployed an AI document reader that scans every incoming invoice, checks the numbers against purchase orders, and logs them directly into the database.",
-      outcome: "Over 30 hours of boring data entry eliminated each week.",
+      industry: "Property Management",
+      client: "Maintenance Triage & Dispatch",
+      problem: "Coordinators spent over 20 hours a week answering repetitive tenant maintenance calls, re-typing details into AppFolio, and chasing contractors for availability.",
+      fix: "We created a 24/7 maintenance intake flow that collects photos and urgency signals, auto-logs tickets in AppFolio, and texts pre-approved contractors for urgent repairs.",
+      outcome: "Saved 22 hours of weekly coordinator busywork. Work order dispatch time cut from 4 hours to 5 minutes.",
     },
   ];
 
@@ -35,10 +37,10 @@ export function CaseStudies({ onOpenAudit }: CaseStudiesProps) {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Common problems we solve.
+            Real problems we solve.
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-            Real examples of how growing businesses use our automations to save time and win more deals.
+            Everyday service businesses and clinics use our automations to stop losing leads and eliminate manual busywork.
           </p>
         </div>
 
@@ -47,12 +49,17 @@ export function CaseStudies({ onOpenAudit }: CaseStudiesProps) {
           {examples.map((item, idx) => (
             <div
               key={idx}
-              className="p-7 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6"
+              className="p-7 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6 hover:border-white/10 transition-colors"
             >
               <div className="space-y-4">
-                <span className="text-xs font-mono text-zinc-400">
-                  {item.industry}
-                </span>
+                <div>
+                  <span className="text-[11px] font-mono text-zinc-400 block">
+                    {item.industry}
+                  </span>
+                  <span className="text-sm font-semibold text-white block mt-0.5">
+                    {item.client}
+                  </span>
+                </div>
 
                 <div className="space-y-3 text-xs leading-relaxed">
                   <div>
