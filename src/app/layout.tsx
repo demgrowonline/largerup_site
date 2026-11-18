@@ -1,5 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Geist, Geist_Mono } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://largerup.com"),
@@ -50,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className={cn("dark scroll-smooth", geistSans.variable, geistMono.variable, "font-sans")}>
       <body className="bg-[#080808] text-white antialiased selection:bg-white selection:text-black">
         {children}
       </body>

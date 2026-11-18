@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Check, X } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 export function ArchitectureComparison() {
   const points = [
@@ -40,12 +41,12 @@ export function ArchitectureComparison() {
           </p>
         </div>
 
-        {/* Comparison Cards */}
-        <div className="space-y-4">
+        {/* Comparison Cards using shadcn Cards */}
+        <div className="flex flex-col gap-4">
           {points.map((pt, idx) => (
-            <div
+            <Card
               key={idx}
-              className="p-6 sm:p-7 rounded-3xl bg-white/[0.02] border border-white/5 grid grid-cols-1 md:grid-cols-12 gap-6 items-center"
+              className="p-6 sm:p-7 rounded-3xl bg-white/[0.02] border-white/5 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:border-white/10 transition-colors"
             >
               <div className="md:col-span-4">
                 <h3 className="text-base font-semibold text-white">
@@ -54,15 +55,15 @@ export function ArchitectureComparison() {
               </div>
 
               <div className="md:col-span-4 flex items-start gap-2.5 text-xs text-zinc-400">
-                <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
+                <X className="size-4 text-zinc-600 shrink-0 mt-0.5" />
                 <span>{pt.others}</span>
               </div>
 
               <div className="md:col-span-4 flex items-start gap-2.5 text-xs text-zinc-200 font-medium">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Check className="size-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span>{pt.largerUp}</span>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { LargerUpLogo } from "./LargerUpLogo";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface NavbarProps {
   onOpenAudit: () => void;
@@ -89,15 +90,16 @@ export function Navbar({ onOpenAudit }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Action Button */}
+        {/* Action Button - shadcn Button */}
         <div className="hidden sm:flex items-center gap-3">
-          <button
+          <Button
             onClick={onOpenAudit}
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-black bg-white rounded-full hover:bg-zinc-200 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-sm"
+            size="sm"
+            className="rounded-full bg-white text-black hover:bg-zinc-200 transition-all font-semibold px-4 py-2 text-xs"
           >
             <span>Book a call</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </button>
+            <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+          </Button>
         </div>
 
         {/* Mobile menu toggle */}
@@ -124,16 +126,16 @@ export function Navbar({ onOpenAudit }: NavbarProps) {
             </a>
           ))}
           <div className="pt-2 border-t border-white/10">
-            <button
+            <Button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenAudit();
               }}
-              className="w-full py-2.5 text-xs font-semibold text-black bg-white rounded-full flex items-center justify-center gap-2"
+              className="w-full rounded-full bg-white text-black font-semibold text-xs"
             >
               <span>Book a call</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+              <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+            </Button>
           </div>
         </div>
       )}

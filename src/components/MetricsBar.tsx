@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Zap, ShieldCheck, Clock, RefreshCw } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 export function MetricsBar() {
   const commitments = [
@@ -32,12 +33,13 @@ export function MetricsBar() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {commitments.map((item, index) => (
-            <div
+            <Card
               key={index}
-              className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col justify-between"
+              size="sm"
+              className="p-5 rounded-2xl bg-white/[0.02] border-white/5 flex flex-col justify-between hover:border-white/10 transition-colors"
             >
-              <div className="flex items-center gap-2.5 mb-3">
-                <item.icon className="w-4 h-4 text-white" />
+              <div className="flex items-center gap-2.5 mb-2">
+                <item.icon className="size-4 text-white" />
                 <h3 className="text-xs font-semibold text-white">
                   {item.title}
                 </h3>
@@ -45,7 +47,7 @@ export function MetricsBar() {
               <p className="text-xs text-zinc-400 leading-relaxed">
                 {item.desc}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

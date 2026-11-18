@@ -1,8 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { X, ArrowRight, CheckCircle2 } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { LargerUpLogo } from "./LargerUpLogo";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 interface AuditModalProps {
   isOpen: boolean;
@@ -18,18 +28,6 @@ export function AuditModal({ isOpen, onClose }: AuditModalProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,102 +45,91 @@ export function AuditModal({ isOpen, onClose }: AuditModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div
-        className="relative w-full max-w-lg bg-[#0d0d0f] rounded-3xl border border-white/10 p-6 sm:p-8 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between pb-5 border-b border-white/10">
+    <Dialog open={isOpen} onOpenChange={(open) => { if (!open) handleReset(); }}>
+      <DialogContent className="max-w-lg bg-[#0d0d0f] border-white/10 rounded-3xl p-6 sm:p-8 text-white shadow-2xl">
+        <DialogHeader className="pb-4 border-b border-white/10 flex flex-col items-start gap-3">
           <LargerUpLogo size={24} withText={true} />
-          <button
-            onClick={handleReset}
-            className="p-1 text-zinc-400 hover:text-white transition-colors"
-            aria-label="Close"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
+        </DialogHeader>
 
         {!isSubmitted ? (
-          <form onSubmit={handleSubmit} className="pt-6 space-y-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 pt-2">
             <div>
-              <h3 className="text-xl font-bold text-white tracking-tight">
+              <DialogTitle className="text-xl font-bold text-white tracking-tight">
                 Book a 15-minute call.
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+              </DialogTitle>
+              <DialogDescription className="text-xs sm:text-sm text-zinc-400 mt-1">
                 Tell us where your business is losing time or sales. We'll show you how we can automate it.
-              </p>
+              </DialogDescription>
             </div>
 
-            <div className="space-y-3 pt-2">
-              <div>
-                <label className="block text-xs text-zinc-300 font-medium mb-1">
+            <div className="flex flex-col gap-3.5 pt-1">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs text-zinc-300 font-medium">
                   Your Name
                 </label>
-                <input
+                <Input
                   type="text"
                   required
-                  placeholder="e.g. Marcus Vance"
+                  placeholder="e.g. Brett Carlson"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 transition-colors"
+                  className="bg-white/[0.04] border-white/10 text-xs sm:text-sm text-white placeholder:text-zinc-600 rounded-xl"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs text-zinc-300 font-medium mb-1">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs text-zinc-300 font-medium">
                     Work Email
                   </label>
-                  <input
+                  <Input
                     type="email"
                     required
-                    placeholder="marcus@company.com"
+                    placeholder="brett@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 transition-colors"
+                    className="bg-white/[0.04] border-white/10 text-xs sm:text-sm text-white placeholder:text-zinc-600 rounded-xl"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs text-zinc-300 font-medium mb-1">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs text-zinc-300 font-medium">
                     Company Website
                   </label>
-                  <input
+                  <Input
                     type="text"
                     required
                     placeholder="company.com"
                     value={formData.website}
                     onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 transition-colors"
+                    className="bg-white/[0.04] border-white/10 text-xs sm:text-sm text-white placeholder:text-zinc-600 rounded-xl"
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-xs text-zinc-300 font-medium mb-1">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs text-zinc-300 font-medium">
                   What is the biggest task eating up your team's time? (Optional)
                 </label>
-                <textarea
+                <Textarea
                   rows={2}
                   placeholder="e.g. replying to leads slowly, manually onboarding clients, invoice copy-pasting..."
                   value={formData.biggestBottleneck}
                   onChange={(e) => setFormData({ ...formData, biggestBottleneck: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                  className="bg-white/[0.04] border-white/10 text-xs sm:text-sm text-white placeholder:text-zinc-600 rounded-xl resize-none"
                 />
               </div>
             </div>
 
-            <div className="pt-3">
-              <button
+            <div className="pt-2">
+              <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 px-4 rounded-full bg-white text-black font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors disabled:opacity-50"
+                className="w-full py-3 rounded-full bg-white text-black font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors"
               >
                 <span>{isSubmitting ? "Sending..." : "Book your 15-minute call"}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                <ArrowRight className="size-4" />
+              </Button>
             </div>
 
             <p className="text-[11px] text-center text-zinc-500">
@@ -150,29 +137,29 @@ export function AuditModal({ isOpen, onClose }: AuditModalProps) {
             </p>
           </form>
         ) : (
-          <div className="py-8 text-center space-y-4">
-            <div className="w-12 h-12 mx-auto rounded-full bg-white/10 flex items-center justify-center">
-              <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+          <div className="py-8 text-center flex flex-col items-center gap-4">
+            <div className="size-12 rounded-full bg-white/10 flex items-center justify-center">
+              <CheckCircle2 className="size-6 text-emerald-400" />
             </div>
 
-            <div className="space-y-1">
-              <h3 className="text-xl font-bold text-white">
+            <div className="flex flex-col gap-1">
+              <DialogTitle className="text-xl font-bold text-white">
                 Request received.
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto">
+              </DialogTitle>
+              <DialogDescription className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto">
                 Thanks, <span className="text-white">{formData.name || "friend"}</span>. We've sent a confirmation to <span className="text-white">{formData.email}</span> and will reach out with calendar times to connect.
-              </p>
+              </DialogDescription>
             </div>
 
-            <button
+            <Button
               onClick={handleReset}
-              className="px-6 py-2 rounded-full bg-white text-black text-xs font-semibold hover:bg-zinc-200 transition-colors"
+              className="px-6 py-2 rounded-full bg-white text-black text-xs font-semibold hover:bg-zinc-200"
             >
               Done
-            </button>
+            </Button>
           </div>
         )}
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }

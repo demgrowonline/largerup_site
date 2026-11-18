@@ -10,8 +10,40 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#080808",
-        canvas: "#000000",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+          glow: "rgba(255, 255, 255, 0.15)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
         surface: {
           50: "rgba(255, 255, 255, 0.02)",
           100: "rgba(255, 255, 255, 0.04)",
@@ -26,12 +58,10 @@ const config: Config = {
           muted: "#71717A",
           faint: "#52525B",
         },
-        accent: {
-          glow: "rgba(255, 255, 255, 0.15)",
-        },
       },
       fontFamily: {
         sans: [
+          "var(--font-geist-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           "SF Pro Display",
@@ -40,9 +70,19 @@ const config: Config = {
           "system-ui",
           "sans-serif",
         ],
-        mono: ["SF Mono", "Menlo", "Monaco", "Consolas", "monospace"],
+        mono: [
+          "var(--font-geist-mono)",
+          "SF Mono",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
       },
       borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
         "squircle-sm": "12px",
         "squircle-md": "18px",
         "squircle-lg": "24px",

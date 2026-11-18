@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 export function Testimonials() {
   const reviews = [
@@ -34,22 +35,24 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Reviews Grid */}
+        {/* Reviews Grid using shadcn Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((rev, idx) => (
-            <div
+            <Card
               key={idx}
-              className="p-7 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6 hover:border-white/10 transition-colors"
+              className="p-7 rounded-3xl bg-white/[0.02] border-white/5 flex flex-col justify-between hover:border-white/10 transition-colors"
             >
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                "{rev.quote}"
-              </p>
+              <CardContent className="p-0">
+                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                  "{rev.quote}"
+                </p>
+              </CardContent>
 
-              <div className="pt-4 border-t border-white/5">
+              <CardFooter className="p-0 pt-4 border-t border-white/5 flex flex-col items-start">
                 <div className="text-xs font-semibold text-white">{rev.author}</div>
                 <div className="text-[11px] text-zinc-500 mt-0.5">{rev.title}</div>
-              </div>
-            </div>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </div>

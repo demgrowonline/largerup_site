@@ -13,13 +13,17 @@ import {
   Clock, 
   AlertCircle 
 } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface NicheSolutionsProps {
   onOpenAudit: () => void;
 }
 
 export function NicheSolutions({ onOpenAudit }: NicheSolutionsProps) {
-  const [activeTab, setActiveTab] = useState(0);
+  const [selectedNiche, setSelectedNiche] = useState("home-services");
 
   const niches = [
     {
@@ -198,8 +202,6 @@ export function NicheSolutions({ onOpenAudit }: NicheSolutionsProps) {
     },
   ];
 
-  const currentNiche = niches[activeTab];
-
   return (
     <section id="industries" className="py-20 sm:py-28 border-t border-white/5 bg-[#070709] relative">
       <div className="max-w-5xl mx-auto px-6 relative z-10">
@@ -213,104 +215,115 @@ export function NicheSolutions({ onOpenAudit }: NicheSolutionsProps) {
           </p>
         </div>
 
-        {/* Industry Pill Selector Tabs */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 sm:pb-0 mb-8 scrollbar-none">
-          {niches.map((item, idx) => {
-            const Icon = item.icon;
-            const isSelected = activeTab === idx;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(idx)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 shrink-0 ${
-                  isSelected
-                    ? "bg-white text-black shadow-md scale-[1.02]"
-                    : "bg-white/[0.03] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/5"
-                }`}
-              >
-                <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-black" : "text-zinc-400"}`} />
-                <span>{item.shortLabel}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Selected Industry Detail Card */}
-        <div className="rounded-3xl bg-white/[0.025] border border-white/10 p-7 sm:p-10 shadow-2xl space-y-8 relative overflow-hidden">
-          {/* Top row: Niche Title & Turnaround */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
-            <div>
-              <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-                {currentNiche.sub}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
-                {currentNiche.headline}
-              </h3>
-            </div>
-            <div className="flex items-center gap-2 self-start sm:self-center px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 shrink-0">
-              <Clock className="w-3.5 h-3.5 text-zinc-400" />
-              <span>{currentNiche.turnaround}</span>
-            </div>
+        {/* shadcn Tabs Container */}
+        <Tabs
+          defaultValue="home-services"
+          value={selectedNiche}
+          onValueChange={setSelectedNiche}
+          className="w-full"
+        >
+          {/* Industry Pill Selector TabsList */}
+          <div className="flex justify-start sm:justify-center overflow-x-auto pb-4 scrollbar-none mb-4">
+            <TabsList className="bg-white/[0.03] border border-white/5 p-1 rounded-full gap-1 h-auto inline-flex shrink-0">
+              {niches.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <TabsTrigger
+                    key={item.id}
+                    value={item.id}
+                    className="rounded-full px-4 py-2 text-xs font-semibold gap-2 transition-all data-active:bg-white data-active:text-black data-active:shadow-md"
+                  >
+                    <Icon className="size-3.5" />
+                    <span>{item.shortLabel}</span>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
           </div>
 
-          {/* Problem Statement Box */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-start gap-3.5">
-            <AlertCircle className="w-4 h-4 text-zinc-500 shrink-0 mt-0.5" />
-            <div>
-              <span className="text-xs font-semibold text-zinc-300 block mb-0.5">
-                The Cost of Manual Work:
-              </span>
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                {currentNiche.problem}
-              </p>
-            </div>
-          </div>
+          {/* Tab Content Panels */}
+          {niches.map((currentNiche) => (
+            <TabsContent key={currentNiche.id} value={currentNiche.id} className="mt-4 outline-none">
+              <Card className="rounded-3xl bg-white/[0.025] border-white/10 p-7 sm:p-10 shadow-2xl space-y-8 relative overflow-hidden">
+                {/* Top row: Niche Title & Turnaround */}
+                <CardHeader className="p-0 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
+                  <div>
+                    <Badge variant="outline" className="w-fit font-mono text-[11px] text-zinc-400 border-white/10 uppercase tracking-wider mb-2">
+                      {currentNiche.sub}
+                    </Badge>
+                    <CardTitle className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
+                      {currentNiche.headline}
+                    </CardTitle>
+                  </div>
+                  <Badge variant="secondary" className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 shrink-0 self-start sm:self-center font-normal">
+                    <Clock className="size-3.5 text-zinc-400" />
+                    <span>{currentNiche.turnaround}</span>
+                  </Badge>
+                </CardHeader>
 
-          {/* 4 Exact Features Grid */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-              Exact Automations We Build For You:
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {currentNiche.features.map((feat, fIdx) => (
-                <div
-                  key={fIdx}
-                  className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-start gap-3 hover:border-white/10 transition-colors"
-                >
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <div className="text-xs sm:text-sm font-semibold text-white">
-                      {feat.title}
-                    </div>
-                    <div className="text-xs text-zinc-400 leading-relaxed">
-                      {feat.desc}
-                    </div>
+                {/* Problem Statement Box */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-start gap-3.5">
+                  <AlertCircle className="size-4 text-zinc-500 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="text-xs font-semibold text-zinc-300 block mb-0.5">
+                      The Cost of Manual Work:
+                    </span>
+                    <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                      {currentNiche.problem}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Bottom Card Footer with Outcome & Direct CTA */}
-          <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <div className="text-xs text-zinc-500">Target Outcome</div>
-              <div className="text-xs sm:text-sm font-semibold text-emerald-400 mt-0.5">
-                {currentNiche.result}
-              </div>
-            </div>
+                {/* 4 Exact Features Grid */}
+                <CardContent className="p-0 space-y-4">
+                  <h4 className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
+                    Exact Automations We Build For You:
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {currentNiche.features.map((feat, fIdx) => (
+                      <Card
+                        key={fIdx}
+                        size="sm"
+                        className="p-5 rounded-2xl bg-white/[0.02] border-white/5 flex flex-row items-start gap-3 hover:border-white/10 transition-colors"
+                      >
+                        <Check className="size-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <div className="space-y-1">
+                          <div className="text-xs sm:text-sm font-semibold text-white">
+                            {feat.title}
+                          </div>
+                          <div className="text-xs text-zinc-400 leading-relaxed">
+                            {feat.desc}
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </CardContent>
 
-            <button
-              onClick={onOpenAudit}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs font-semibold hover:bg-zinc-200 transition-all duration-200 shadow-sm"
-            >
-              <span>Automate my {currentNiche.shortLabel}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
+                {/* Bottom Card Footer with Outcome & Direct CTA */}
+                <CardFooter className="p-0 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <div className="text-xs text-zinc-500">Target Outcome</div>
+                    <div className="text-xs sm:text-sm font-semibold text-emerald-400 mt-0.5">
+                      {currentNiche.result}
+                    </div>
+                  </div>
 
-        {/* Small Niches Note (Auto repair, Logistics, Gyms) */}
+                  <Button
+                    onClick={onOpenAudit}
+                    size="sm"
+                    className="rounded-full bg-white text-black hover:bg-zinc-200 text-xs font-semibold px-5 py-2.5 transition-all shadow-sm"
+                  >
+                    <span>Automate my {currentNiche.shortLabel}</span>
+                    <ArrowRight className="size-3.5 ml-1.5" />
+                  </Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+          ))}
+        </Tabs>
+
+        {/* Small Niches Note */}
         <div className="mt-8 text-center">
           <p className="text-xs text-zinc-500">
             Also supporting auto repair shops, physical therapy clinics, logistics & dispatch, and local trade contractors.

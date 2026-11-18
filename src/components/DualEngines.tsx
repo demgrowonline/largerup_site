@@ -2,6 +2,8 @@
 
 import React from "react";
 import { TrendingUp, Clock, ArrowRight, Check } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface DualEnginesProps {
   onOpenAudit: () => void;
@@ -21,25 +23,27 @@ export function DualEngines({ onOpenAudit }: DualEnginesProps) {
           </p>
         </div>
 
-        {/* Two Plain-English Cards */}
+        {/* Two Plain-English Cards using shadcn Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1: Sales Automation */}
-          <div className="p-7 sm:p-9 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-white">
-                <TrendingUp className="w-5 h-5" />
+          <Card className="p-7 sm:p-9 rounded-3xl bg-white/[0.03] border-white/10 flex flex-col justify-between">
+            <CardHeader className="p-0 pb-4 space-y-4">
+              <div className="size-10 rounded-2xl bg-white/5 flex items-center justify-center text-white">
+                <TrendingUp className="size-5" />
               </div>
 
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <CardTitle className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   1. Sales Automation
-                </h3>
+                </CardTitle>
                 <p className="text-xs sm:text-sm text-zinc-400 mt-1">
                   Close more deals without hiring an army of sales reps.
                 </p>
               </div>
+            </CardHeader>
 
-              <div className="space-y-3 pt-2">
+            <CardContent className="p-0">
+              <div className="flex flex-col gap-3.5 pt-2">
                 {[
                   {
                     title: "Instant replies to new leads",
@@ -59,7 +63,7 @@ export function DualEngines({ onOpenAudit }: DualEnginesProps) {
                   },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <Check className="size-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
                       <div className="text-xs font-semibold text-white">
                         {item.title}
@@ -71,36 +75,39 @@ export function DualEngines({ onOpenAudit }: DualEnginesProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </CardContent>
 
-            <div className="pt-4 border-t border-white/5">
-              <button
+            <CardFooter className="p-0 pt-6 border-t border-white/5">
+              <Button
+                variant="ghost"
                 onClick={onOpenAudit}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-zinc-300 transition-colors"
+                className="p-0 h-auto text-xs font-semibold text-white hover:text-zinc-300 hover:bg-transparent"
               >
                 <span>Automate your sales pipeline</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
+                <ArrowRight className="size-3.5 ml-1.5" />
+              </Button>
+            </CardFooter>
+          </Card>
 
           {/* Card 2: Work Automation */}
-          <div className="p-7 sm:p-9 rounded-3xl bg-white/[0.03] border border-white/10 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-white">
-                <Clock className="w-5 h-5" />
+          <Card className="p-7 sm:p-9 rounded-3xl bg-white/[0.03] border-white/10 flex flex-col justify-between">
+            <CardHeader className="p-0 pb-4 space-y-4">
+              <div className="size-10 rounded-2xl bg-white/5 flex items-center justify-center text-white">
+                <Clock className="size-5" />
               </div>
 
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <CardTitle className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   2. Work Automation
-                </h3>
+                </CardTitle>
                 <p className="text-xs sm:text-sm text-zinc-400 mt-1">
                   Stop paying your smart team to do boring copy-paste work.
                 </p>
               </div>
+            </CardHeader>
 
-              <div className="space-y-3 pt-2">
+            <CardContent className="p-0">
+              <div className="flex flex-col gap-3.5 pt-2">
                 {[
                   {
                     title: "Instant client onboarding",
@@ -120,7 +127,7 @@ export function DualEngines({ onOpenAudit }: DualEnginesProps) {
                   },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <Check className="size-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
                       <div className="text-xs font-semibold text-white">
                         {item.title}
@@ -132,18 +139,19 @@ export function DualEngines({ onOpenAudit }: DualEnginesProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </CardContent>
 
-            <div className="pt-4 border-t border-white/5">
-              <button
+            <CardFooter className="p-0 pt-6 border-t border-white/5">
+              <Button
+                variant="ghost"
                 onClick={onOpenAudit}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:text-zinc-300 transition-colors"
+                className="p-0 h-auto text-xs font-semibold text-white hover:text-zinc-300 hover:bg-transparent"
               >
                 <span>Automate your daily busywork</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
+                <ArrowRight className="size-3.5 ml-1.5" />
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </div>
     </section>

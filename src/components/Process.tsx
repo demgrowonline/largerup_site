@@ -2,6 +2,9 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface ProcessProps {
   onOpenAudit: () => void;
@@ -10,19 +13,22 @@ interface ProcessProps {
 export function Process({ onOpenAudit }: ProcessProps) {
   const steps = [
     {
-      num: "1",
+      num: "01",
       title: "15-minute call",
       desc: "We look at your current setup, find where leads are falling through the cracks, and spot the manual tasks eating up your team's time.",
+      time: "Day 1",
     },
     {
-      num: "2",
+      num: "02",
       title: "We build everything",
       desc: "Our engineers build and test your automations privately. Your daily operations keep running without interruption.",
+      time: "Days 2 to 10",
     },
     {
-      num: "3",
+      num: "03",
       title: "Turn it on & see results",
       desc: "We connect your new automations. Leads get answered in seconds, and repetitive tasks disappear from your team's to-do list.",
+      time: "Days 11 to 14",
     },
   ];
 
@@ -39,44 +45,43 @@ export function Process({ onOpenAudit }: ProcessProps) {
           </p>
         </div>
 
-        {/* 3 Steps */}
+        {/* 3 Steps using shadcn Card */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((st, idx) => (
-            <div
+            <Card
               key={idx}
-              className="p-7 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6"
+              className="p-7 sm:p-8 rounded-3xl bg-white/[0.02] border-white/5 flex flex-col justify-between hover:border-white/10 transition-colors"
             >
-              <div className="space-y-4">
-                <span className="text-xs font-mono text-zinc-500">
-                  Step 0{st.num}
+              <CardHeader className="p-0 pb-3 flex flex-row items-center justify-between">
+                <Badge variant="outline" className="font-mono text-xs text-zinc-500 border-white/10">
+                  Step {st.num}
+                </Badge>
+                <span className="text-[11px] text-zinc-500 font-mono">
+                  {st.time}
                 </span>
+              </CardHeader>
 
-                <h3 className="text-lg font-bold text-white">
+              <CardContent className="p-0 space-y-2">
+                <CardTitle className="text-lg font-bold text-white">
                   {st.title}
-                </h3>
-
+                </CardTitle>
                 <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {st.desc}
                 </p>
-              </div>
-
-              <div className="text-[11px] text-zinc-500 font-mono">
-                {idx === 0 && "Day 1"}
-                {idx === 1 && "Days 2 to 10"}
-                {idx === 2 && "Days 11 to 14"}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <button
+          <Button
             onClick={onOpenAudit}
-            className="inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold text-black bg-white rounded-full hover:bg-zinc-200 transition-colors"
+            size="lg"
+            className="rounded-full bg-white text-black hover:bg-zinc-200 font-semibold px-6 py-6 text-xs sm:text-sm transition-all"
           >
             <span>Book your 15-minute call</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+            <ArrowRight className="size-4 ml-2" />
+          </Button>
         </div>
       </div>
     </section>

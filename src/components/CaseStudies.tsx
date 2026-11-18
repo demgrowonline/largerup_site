@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface CaseStudiesProps {
   onOpenAudit?: () => void;
@@ -44,42 +46,40 @@ export function CaseStudies({ onOpenAudit }: CaseStudiesProps) {
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Cards using shadcn Card */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {examples.map((item, idx) => (
-            <div
+            <Card
               key={idx}
-              className="p-7 rounded-3xl bg-white/[0.02] border border-white/5 flex flex-col justify-between space-y-6 hover:border-white/10 transition-colors"
+              className="p-7 rounded-3xl bg-white/[0.02] border-white/5 flex flex-col justify-between hover:border-white/10 transition-colors"
             >
-              <div className="space-y-4">
+              <CardHeader className="p-0 pb-4 space-y-2">
+                <Badge variant="outline" className="w-fit text-[10px] font-mono text-zinc-400 border-white/10">
+                  {item.industry}
+                </Badge>
+                <CardTitle className="text-sm font-semibold text-white">
+                  {item.client}
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent className="p-0 space-y-3 text-xs leading-relaxed">
                 <div>
-                  <span className="text-[11px] font-mono text-zinc-400 block">
-                    {item.industry}
-                  </span>
-                  <span className="text-sm font-semibold text-white block mt-0.5">
-                    {item.client}
-                  </span>
+                  <span className="text-zinc-500 font-medium">The problem: </span>
+                  <span className="text-zinc-300">{item.problem}</span>
                 </div>
 
-                <div className="space-y-3 text-xs leading-relaxed">
-                  <div>
-                    <span className="text-zinc-500 font-medium">The problem: </span>
-                    <span className="text-zinc-300">{item.problem}</span>
-                  </div>
-
-                  <div>
-                    <span className="text-zinc-500 font-medium">What we built: </span>
-                    <span className="text-zinc-300">{item.fix}</span>
-                  </div>
+                <div>
+                  <span className="text-zinc-500 font-medium">What we built: </span>
+                  <span className="text-zinc-300">{item.fix}</span>
                 </div>
-              </div>
+              </CardContent>
 
-              <div className="pt-4 border-t border-white/5">
+              <CardFooter className="p-0 pt-4 border-t border-white/5">
                 <div className="text-xs font-semibold text-emerald-400">
                   {item.outcome}
                 </div>
-              </div>
-            </div>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </div>

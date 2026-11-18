@@ -2,6 +2,9 @@
 
 import React from "react";
 import { ArrowRight, ChevronRight, Check, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface HeroProps {
   onOpenAudit: () => void;
@@ -28,83 +31,97 @@ export function Hero({ onOpenAudit }: HeroProps) {
             Either way, your business makes more money.
           </p>
 
-          {/* Action CTAs */}
+          {/* Action CTAs using shadcn Buttons */}
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <button
+            <Button
               onClick={onOpenAudit}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold text-black bg-white rounded-full hover:bg-zinc-200 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shadow-lg active:scale-95"
+              size="lg"
+              className="w-full sm:w-auto rounded-full bg-white text-black hover:bg-zinc-200 font-semibold px-6 py-6 text-sm shadow-lg hover:-translate-y-0.5 transition-all"
             >
               <span>Book a 15-minute call</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
 
-            <a
-              href="#what-we-do"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-3.5 text-xs sm:text-sm font-medium text-zinc-300 rounded-full hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto rounded-full border-white/10 hover:border-white/20 text-zinc-300 hover:text-white bg-white/[0.02] hover:bg-white/[0.06] font-medium px-5 py-6 text-sm hover:-translate-y-0.5 transition-all"
+              onClick={() => {
+                const el = document.getElementById("what-we-do");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               <span>See what we do</span>
-              <ChevronRight className="w-4 h-4 text-zinc-500" />
-            </a>
+              <ChevronRight className="w-4 h-4 ml-1.5 text-zinc-500" />
+            </Button>
           </div>
         </div>
 
-        {/* Clear Side-by-Side Reality Visual (Apple & Mobbin restraint) */}
+        {/* Clear Side-by-Side Reality Visual using shadcn Cards & Badges */}
         <div className="mt-14 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Before */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4 hover:border-white/10 transition-all duration-200">
-            <div className="text-xs font-mono text-zinc-500 uppercase tracking-wider">
-              Before
-            </div>
-            <h3 className="text-lg font-semibold text-zinc-300">
-              How most businesses run today
-            </h3>
-            <ul className="space-y-3 pt-2 text-xs sm:text-sm text-zinc-400">
-              <li className="flex items-start gap-2.5">
-                <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
-                <span>New leads sit in an inbox for hours before anyone replies</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
-                <span>Good prospects go cold and buy from faster competitors</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
-                <span>Your best people waste hours every day on copy-paste tasks</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
-                <span>Old leads in your CRM are completely forgotten</span>
-              </li>
-            </ul>
-          </div>
+          {/* Before Card */}
+          <Card className="bg-white/[0.02] border-white/5 hover:border-white/10 transition-all rounded-3xl p-6 sm:p-8">
+            <CardHeader className="p-0 pb-4">
+              <Badge variant="outline" className="w-fit text-[11px] font-mono text-zinc-500 border-white/10 mb-1">
+                BEFORE
+              </Badge>
+              <CardTitle className="text-lg font-semibold text-zinc-300">
+                How most businesses run today
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <ul className="space-y-3 pt-2 text-xs sm:text-sm text-zinc-400">
+                <li className="flex items-start gap-2.5">
+                  <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
+                  <span>New leads sit in an inbox for hours before anyone replies</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
+                  <span>Good prospects go cold and buy from faster competitors</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
+                  <span>Your best people waste hours every day on copy-paste tasks</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <X className="w-4 h-4 text-zinc-600 shrink-0 mt-0.5" />
+                  <span>Old leads in your CRM are completely forgotten</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
 
-          {/* With LargerUp */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white/[0.04] border border-white/15 space-y-4 shadow-xl hover:border-white/25 transition-all duration-200">
-            <div className="text-xs font-mono text-white uppercase tracking-wider">
-              With LargerUp
-            </div>
-            <h3 className="text-lg font-semibold text-white">
-              Running on autopilot
-            </h3>
-            <ul className="space-y-3 pt-2 text-xs sm:text-sm text-zinc-200">
-              <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Every lead gets an instant, personal reply in under a minute</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Qualified prospects book directly onto your sales calendar</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Client setup, contracts, and invoicing happen without human effort</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Old contacts are automatically revived into new closed deals</span>
-              </li>
-            </ul>
-          </div>
+          {/* With LargerUp Card */}
+          <Card className="bg-white/[0.04] border-white/15 hover:border-white/25 transition-all rounded-3xl p-6 sm:p-8 shadow-xl">
+            <CardHeader className="p-0 pb-4">
+              <Badge variant="secondary" className="w-fit text-[11px] font-mono text-white bg-white/10 mb-1">
+                WITH LARGERUP
+              </Badge>
+              <CardTitle className="text-lg font-semibold text-white">
+                Running on autopilot
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <ul className="space-y-3 pt-2 text-xs sm:text-sm text-zinc-200">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Every lead gets an instant, personal reply in under a minute</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Qualified prospects book directly onto your sales calendar</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Client setup, contracts, and invoicing happen without human effort</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>Old contacts are automatically revived into new closed deals</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

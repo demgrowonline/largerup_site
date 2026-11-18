@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Badge } from "@/components/ui/badge";
 
 export function MarqueeLogos() {
   const serviceCompanies = [
@@ -117,7 +118,7 @@ export function MarqueeLogos() {
         </p>
       </div>
 
-      {/* Marquee Track with Dual Edge Blur / Fade Mask (Mobbin & Marvin style) */}
+      {/* Marquee Track with Dual Edge Blur / Fade Mask */}
       <div className="relative w-full overflow-hidden">
         {/* Left Blur + Gradient Fade */}
         <div 
@@ -147,9 +148,12 @@ export function MarqueeLogos() {
               className="flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-white/[0.02] border border-white/5 text-zinc-400 hover:text-white transition-all duration-300 opacity-75 hover:opacity-100 shrink-0 select-none hover:border-white/15"
             >
               <div className="shrink-0">{item.svg}</div>
-              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider bg-white/5 px-2 py-0.5 rounded-full">
+              <Badge 
+                variant="outline" 
+                className="text-[10px] font-mono text-zinc-400 border-white/10 uppercase tracking-wider bg-white/[0.04] py-0 px-2 h-4 rounded-full"
+              >
                 {item.niche}
-              </span>
+              </Badge>
             </div>
           ))}
         </div>

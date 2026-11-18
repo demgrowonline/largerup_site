@@ -2,6 +2,10 @@
 
 import React, { useState } from "react";
 import { ArrowRight, Clock } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
 
 interface RoiCalculatorProps {
   onOpenAudit: () => void;
@@ -30,25 +34,24 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
           </p>
         </div>
 
-        {/* Calculator Box */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white/[0.03] border border-white/10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        {/* Calculator Box using shadcn Card */}
+        <Card className="p-8 sm:p-10 rounded-3xl bg-white/[0.03] border-white/10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center shadow-xl">
           {/* Sliders */}
-          <div className="md:col-span-7 space-y-7">
+          <div className="md:col-span-7 flex flex-col gap-7">
             {/* Slider 1 */}
-            <div className="space-y-2">
+            <div className="flex flex-col gap-3">
               <div className="flex justify-between items-center text-sm">
                 <span className="font-medium text-white">Team members doing repetitive work</span>
-                <span className="font-mono text-white text-xs bg-white/10 px-2.5 py-1 rounded-md">
+                <Badge variant="secondary" className="font-mono text-white text-xs bg-white/10 px-2.5 py-0.5 rounded-md">
                   {teamSize} people
-                </span>
+                </Badge>
               </div>
-              <input
-                type="range"
-                min="1"
-                max="30"
-                value={teamSize}
-                onChange={(e) => setTeamSize(Number(e.target.value))}
-                className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-white"
+              <Slider
+                min={1}
+                max={30}
+                value={[teamSize]}
+                onValueChange={(val: any) => setTeamSize(Array.isArray(val) ? val[0] : val)}
+                className="w-full py-1"
               />
               <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
                 <span>1 person</span>
@@ -57,20 +60,19 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
             </div>
 
             {/* Slider 2 */}
-            <div className="space-y-2">
+            <div className="flex flex-col gap-3">
               <div className="flex justify-between items-center text-sm">
                 <span className="font-medium text-white">Hours each person spends on busywork per week</span>
-                <span className="font-mono text-white text-xs bg-white/10 px-2.5 py-1 rounded-md">
+                <Badge variant="secondary" className="font-mono text-white text-xs bg-white/10 px-2.5 py-0.5 rounded-md">
                   {hoursPerWeek} hrs / week
-                </span>
+                </Badge>
               </div>
-              <input
-                type="range"
-                min="2"
-                max="25"
-                value={hoursPerWeek}
-                onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-white"
+              <Slider
+                min={2}
+                max={25}
+                value={[hoursPerWeek]}
+                onValueChange={(val: any) => setHoursPerWeek(Array.isArray(val) ? val[0] : val)}
+                className="w-full py-1"
               />
               <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
                 <span>2 hours</span>
@@ -83,8 +85,8 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
             </p>
           </div>
 
-          {/* Results Display */}
-          <div className="md:col-span-5 p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-4 text-center md:text-left">
+          {/* Results Display using shadcn Card */}
+          <Card className="md:col-span-5 p-6 rounded-2xl bg-white/[0.04] border-white/10 flex flex-col gap-4 text-center md:text-left">
             <div>
               <div className="text-xs text-zinc-400 uppercase tracking-wider font-mono">
                 Time lost every year
@@ -103,15 +105,15 @@ export function RoiCalculator({ onOpenAudit }: RoiCalculatorProps) {
               </div>
             </div>
 
-            <button
+            <Button
               onClick={onOpenAudit}
-              className="w-full py-3 px-4 rounded-full bg-white text-black font-semibold text-xs flex items-center justify-center gap-2 hover:bg-zinc-200 transition-colors"
+              className="w-full py-3 px-4 rounded-full bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition-colors"
             >
               <span>Get these hours back</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
+              <ArrowRight className="size-3.5 ml-1.5" />
+            </Button>
+          </Card>
+        </Card>
       </div>
     </section>
   );
